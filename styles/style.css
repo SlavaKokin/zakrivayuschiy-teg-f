@@ -158,7 +158,7 @@
   justify-self: start;
 }
 
-.card__article-text:first-child{
+.card__article-text:first-child {
   margin-bottom: 27px;
 }
 
@@ -277,7 +277,7 @@ dialog::backdrop {
   cursor: pointer;
 }
 
-.button__effect:before{
+.button__effect:before {
   content: '';
   position: absolute;
   top: 0;
