@@ -13,7 +13,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--Inter), sans-serif;
+  font-family: var(--main-font), sans-serif;
   font-variation-settings: 'wght' var(--card-text-weight);
   color: var(--accent-color);
   background-image: var(--bg-image);
@@ -36,7 +36,7 @@
 }
 
 .header__title {
-  font-family: var(--PressStart2P);
+  font-family: var(--accent-font), sans-serif;
   font-weight: var(--accent-weight);
   font-size: var(--f-s-accent-title);
   line-height: 100%;
@@ -44,7 +44,7 @@
 }
 
 .header__text {
-  font-family: var(--PressStart2P);
+  font-family: var(--accent-font), sans-serif;
   font-weight: var(--accent-weight);
   font-size: var(--f-s-accent-text);
   line-height: 100%;
@@ -61,13 +61,13 @@
   display: grid;
   grid-template-rows: repeat(3, min-content);
   margin: 0 auto;
-  max-inline-size: 700px;
+  max-inline-size: 696px;
 }
 
 .card__title {
   font-variation-settings: 'wght' var(--card-title-weight);
-  font-size: 18px;
-  line-height: 23px;
+  font-size: clamp(1.125rem, 1.125rem + 0vw, 1.125rem);
+  line-height: 117%;
   padding-block-start: 3px;
   padding-block-end: 3px;
   padding-inline: 10px;
@@ -80,7 +80,6 @@
   display: inline-block;
   overflow: hidden;
   background-color: var(--bg-color);
-  border: 2px solid var(--accent-color);
 }
 
 .card__image {
@@ -123,7 +122,7 @@
   position: absolute;
   top: 25px;
   right: clamp(0.8125rem, 0.5484rem + 1.1268vw, 1.5625rem);
-  font-family: var(--PressStart2P);
+  font-family: var(--accent-font), sans-serif;
   font-weight: var(--accent-weight);
   font-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
   line-height: 100%;
@@ -136,7 +135,7 @@
     mix-blend-mode: hard-light;
 }
 
-@supports((text-stroke: 1px #fff) or (-webkit-text-stroke: 1 #fff)) {
+@supports((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
   .card__label {
     -webkit-text-stroke: 1px #fff;
     text-stroke: 1px #fff;
@@ -147,35 +146,37 @@
 .card__article {
   display: grid;
   grid-template-rows: 1fr min-content min-content;
-  padding: 25px;
+  padding-inline: 25px;
+  padding-block-end: 25px;
   border: 2px solid var(--accent-color);
   background-color: var(--bg-color);
 }
 
 .card__article-text {
   font-size: clamp(1.125rem, 1.125rem + 0vw, 1.125rem);
-  line-height: 1.3rem;
+  line-height: 119%;
   justify-self: start;
-}
-
-.card__article-text:first-child {
-  margin-bottom: 27px;
+  margin-block-start: 27px;
 }
 
 /*Кнопка карточки*/
 .card__button {
-  display: inline-flex;
+  display: flex;
   justify-self: end;
   margin-block-start: 25px;
 }
 
 .card__icon-button {
-  display: inline-block;
-  height: 37px;
+  display: flex;
   border: 2px solid transparent;
   transition: border-color 0.3s ease;
   background: none;
   cursor: pointer;
+  align-items: center;
+  padding: 0;
+  max-width: 100%;
+  max-height: 38px;
+  margin-right: 4px;
 }
 
 .sparks {
@@ -184,13 +185,14 @@
 
 .card__like-button {
   inline-size: 130px;
+  block-size: 38px;
   border: 2px solid var(--accent-color);
   background-color: var(--bg-color);
 }
 
 .button__text {
   position: relative;
-  font-family: var(--PressStart2P);
+  font-family: var(--accent-font), sans-serif;
   font-weight: var(--accent-weight);
   font-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
   line-height: 90%;
@@ -245,7 +247,7 @@
 }
 
 .dialog__text {
-  font-family: var(--PressStart2P);
+  font-family: var(--accent-font), sans-serif;
   font-weight: var(--accent-weight);
   font-size: 14px;
   text-transform: uppercase;
@@ -261,20 +263,20 @@
 }
 
 dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.5);
+  background-color: rgb(0 0 0 / 0.75);
 }
 
 /*Общие эффекты кнопок*/
 .button__effect:focus {
   outline: none;
   box-shadow: 2px 2px 0px 0px #000000;
-  transition: box-shadow 0.3s ease;
 }
 
 .button__effect {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
 
 .button__effect:before {
@@ -296,8 +298,14 @@ dialog::backdrop {
 
  /*Адаптивность экрана 375px*/
 @media (width <= 375px) {
-  .content {
-    gap: 51px;
+  .card__title {
+    line-height: 114%;
+    padding-block-start: 3px;
+    padding-block-end: 5px;
+  }
+
+  .card__article-text {
+    line-height: 115%;
   }
 
   .button__save {
